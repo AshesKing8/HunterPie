@@ -43,7 +43,16 @@ jobs:
     - name: Find MSBuild Path
       run: |
         MSBUILD_PATH=$(vswhere -latest -property installationPath)
+        if [ -z "$MSBUILD_PATH" ]; then
+          echo "MSBuild not found. Exiting..."
+          exit 1
+        fi
+        echo "MSBuild found at: $MSBUILD_PATH"
         echo "##vso[task.prependpath]$MSBUILD_PATH\MSBuild\Current\Bin"
+
+    - name: Verify MSBuild Installation
+      run: |
+        msbuild -version
 
     - name: Build project
       run: dotnet build HunterPie --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
