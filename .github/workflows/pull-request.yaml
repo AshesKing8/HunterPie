@@ -28,7 +28,14 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0
-    
+
+    - name: Install Visual Studio Build Tools
+      uses: microsoft/setup-msbuild@v1.1
+      with:
+        vs-version: '2022'
+        vs-components: |
+          Microsoft.VisualStudio.Component.VC.Tools.x86.x64
+
     - name: Build project
       run: dotnet build HunterPie --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
 
