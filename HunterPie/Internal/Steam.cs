@@ -23,8 +23,8 @@ internal static class Steam
         {
             _ = Process.Start(new ProcessStartInfo()
             {
-                FileName = "G:\XboxGames\Monster Hunter Rise\Content\MonsterHunterRise.exe",
-                // FileName = $"steam://run/{appId}",
+                // FileName = "G:\XboxGames\Monster Hunter Rise\Content\MonsterHunterRise.exe",
+                FileName = $"steam://run/{appId}",
                 UseShellExecute = true
             });
         }
