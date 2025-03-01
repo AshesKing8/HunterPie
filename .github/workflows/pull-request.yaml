@@ -24,11 +24,13 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1.1
-
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0
+    
     - name: Build project
-      run: MSBuild.exe HunterPie.Native.vcxproj /p:Configuration=Release /p:Platform=x64 /v:n
+      run: dotnet build HunterPie --nologo -v q --property WarningLevel=0 /clp:ErrorsOnly
 
     - name: Run unit tests
       run: dotnet test *.Tests
