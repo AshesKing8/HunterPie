@@ -1,4 +1,4 @@
-﻿using HunterPie.Core.Client.Configuration.Enums;
+using HunterPie.Core.Client.Configuration.Enums;
 using HunterPie.Core.Logger;
 using System;
 using System.Diagnostics;
@@ -23,21 +23,14 @@ internal static class Steam
         {
             _ = Process.Start(new ProcessStartInfo()
             {
-                // FileName = "G:\XboxGames\Monster Hunter Rise\Content\MonsterHunterRise.exe",
-                FileName = $"steam://run/{appId}",
+                FileName = "G:\XboxGames\Monster Hunter Rise\Content\MonsterHunterRise.exe",
+                // FileName = $"steam://run/{appId}",
                 UseShellExecute = true
             });
         }
         catch (Exception err)
         {
-            try
-            {
-                _ = Process.Start(new ProcessStartInfo()
-                {
-                    
-                    UseShellExecute = true
-                });
-            }
-        } 
+            Log.Error(err.ToString());
+        }
     }
 }
