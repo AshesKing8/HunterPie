@@ -23,7 +23,8 @@ internal static class Steam
         {
             _ = Process.Start(new ProcessStartInfo()
             {
-                FileName = $"steam://run/{appId}",
+                FileName = "G:\XboxGames\Monster Hunter Rise\Content\MonsterHunterRise.exe",
+                // FileName = $"steam://run/{appId}",
                 UseShellExecute = true
             });
         }
@@ -33,15 +34,10 @@ internal static class Steam
             {
                 _ = Process.Start(new ProcessStartInfo()
                 {
-                    FileName = "G:\XboxGames\Monster Hunter Rise\Content\MonsterHunterRise.exe",
+                    
                     UseShellExecute = true
                 });
             }
-            catch (Exception err)
-            {
-                Log.Error($"Failed to start non-Steam game at xbox mh start {err}");
-            }
-            Log.Error(err.ToString());
         } 
     }
 }
